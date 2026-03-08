@@ -20,8 +20,7 @@ function ProjectCard({ project }: ProjectCardProps) {
       border border-gray-200 dark:border-gray-800
       bg-white dark:bg-gray-900
       text-gray-900 dark:text-white
-      shadow-sm hover:shadow-md
-      transition"
+      rounded-lg hover:scale-105 transition"
     >
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
 
@@ -30,7 +29,9 @@ function ProjectCard({ project }: ProjectCardProps) {
       </p>
 
       {/* Tech badges */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div
+        className="flex flex-wrap gap-2 mb-4"
+      >
         {tech.map((t) => (
           <span
             key={t}
