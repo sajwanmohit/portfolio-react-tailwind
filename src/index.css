@@ -5,3 +5,28 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ticker movement */
+@keyframes tickerMove {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ticker-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+/* .ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  min-width: max-content;
+  animation: tickerMove 7s linear infinite;
+} */
