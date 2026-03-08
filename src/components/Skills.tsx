@@ -51,18 +51,14 @@ function Skills() {
           {skillGroups.map((group, index) => (
             <motion.div
               key={group.category}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
               className="
               p-6
-              rounded-lg
               border
               border-gray-200
               dark:border-gray-800
               bg-white
               dark:bg-gray-900
-              shadow-sm"
+              rounded-lg hover:scale-105 transition"
             >
               <h3 className="text-xl font-semibold mb-4">{group.category}</h3>
 
