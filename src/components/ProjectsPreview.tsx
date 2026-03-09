@@ -1,81 +1,134 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import useGithubProjects from "../hooks/useGithubProjects";
+import ProjectCard from "./ProjectCard";
+import type { Project } from "../types/github";
 
 function ProjectsPreview() {
-  const { projects, loading } = useGithubProjects("sajwanmohit");
-  type GithubRepo = {
-    id: number;
-    name: string;
-    description: string;
-    html_url: string;
-    stargazers_count: number;
-    language: string;
-  };
+  const { projects, loading, error } = useGithubProjects("sajwanmohit");
 
   const tickerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
+
+  useEffect(() => {
     if (loading) return;
 
     const text = tickerRef.current;
     const container = containerRef.current;
 
     if (!text || !container) return;
+
     let direction = -1;
     let frameId: number;
-    let position = 0;
-
     const textWidth = text.offsetWidth;
     const containerWidth = container.offsetWidth;
+    let position = containerWidth - textWidth;
 
     const animate = () => {
-      position += direction;
-      //LEFT EDGE BOUNCE
+      position += direction * 3;
+
+      // LEFT EDGE BOUNCE
       if (position <= 0) {
         position = 0;
         direction = 1;
       }
-      //RIGHT EDGE BOUNCE
+
+      // RIGHT EDGE BOUNCE
       if (position >= containerWidth - textWidth) {
         position = containerWidth - textWidth;
         direction = -1;
       }
+
       text.style.transform = `translateX(${position}px)`;
       frameId = requestAnimationFrame(animate);
     };
+
     frameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameId);
   }, [loading]);
 
-  if (loading) return <p>Loading projects...</p>;
+  if (loading) {
+    return (
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <div className="mb-8 flex items-center justify-center">
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600 dark:border-gray-600 dark:border-t-blue-400"></div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <p className="text-red-600 dark:text-red-400">
+              Failed to load projects: {error}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20">
-      <h2 className="text-3xl font-bold text-center mb-12">Projects</h2>
-      <div ref={containerRef} className="ticker-container mt-2">
-        <div
-          ref={tickerRef}
-          className="ticker-text inline-block whitespace-nowrap text-gray-500 dark:text-gray-400"
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          Some of the projects I’ve built and published on GitHub.
-        </div>
-      </div>
+          <h2 className="mb-12 text-center text-3xl font-bold">Projects</h2>
+        </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {projects.slice(0, 6).map((repo: GithubRepo) => (
+        <motion.div
+          ref={containerRef}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="ticker-container mb-8 mt-2"
+        >
           <div
-            key={repo.id}
-            className="bg-gray-800 p-6 rounded-lg hover:scale-105 transition"
+            ref={tickerRef}
+            className="inline-block whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
           >
-            <h3 className="text-xl font-semibold mb-2">{repo.name}</h3>
-
-            <p className="text-gray-400 mb-4">{repo.description}</p>
-
-            <a href={repo.html_url} target="_blank" className="text-blue-400">
-              View Repo
-            </a>
+            Some of the projects I've built and published on GitHub.
           </div>
-        ))}
+        </motion.div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.slice(0, 6).map((project: Project, index: number) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

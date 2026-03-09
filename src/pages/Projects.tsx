@@ -1,46 +1,73 @@
 import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
-
-const projects = [
-  {
-    title: "User Order Microservice",
-    description:
-      "Spring Boot microservices project with REST APIs and Dockerized services.",
-    tech: ["Java", "Spring Boot", "Docker", "REST"],
-    github: "https://github.com/your-username/user-order-service",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "Personal developer portfolio built with React, TypeScript, Tailwind CSS and deployed on Vercel.",
-    tech: ["React", "TypeScript", "Tailwind", "Vite"],
-    github: "https://github.com/your-username/portfolio",
-    demo: "https://your-portfolio.vercel.app",
-  },
-  {
-    title: "Payment Processing API",
-    description:
-      "Backend service handling payment workflows with Spring Boot and event-driven architecture.",
-    tech: ["Java", "Spring Boot", "Kafka", "Microservices"],
-    github: "https://github.com/your-username/payment-service",
-  },
-];
+import useGithubProjects from "../hooks/useGithubProjects";
 
 function Projects() {
+  const { projects, loading, error } = useGithubProjects("sajwanmohit");
+
+  if (loading) {
+    return (
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <div className="mb-8 flex items-center justify-center">
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600 dark:border-gray-600 dark:border-t-blue-400"></div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <p className="text-red-600 dark:text-red-400">
+              Failed to load projects: {error}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Projects</h2>
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="mb-12 text-center text-3xl font-bold">Projects</h2>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.6,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard {...project} />
             </motion.div>
           ))}
         </div>
