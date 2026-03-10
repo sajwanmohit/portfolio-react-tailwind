@@ -5,7 +5,7 @@ import ProjectCard from "./ProjectCard";
 import type { Project } from "../types/github";
 
 function ProjectsPreview() {
-  const { projects, loading, error } = useGithubProjects("sajwanmohit");
+  const { projects, loading, error } = useGithubProjects("sajwanmohit",2);
 
   const tickerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);

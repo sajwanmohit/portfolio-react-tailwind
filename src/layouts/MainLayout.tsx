@@ -3,10 +3,10 @@ import Navbar from "../components/Navbar";
 
 function MainLayout() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-250">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-250">
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-6 py-12">
+      <main className="flex-1 max-w-6xl mx-auto px-6 py-12">
         <Outlet />
       </main>
 
