@@ -10,7 +10,7 @@ function MainLayout() {
         <Outlet />
       </main>
 
-      <footer className="text-center py-6 text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800">
+      <footer className="relative text-center py-6 text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
         © 2026 Mohit Sajwan
       </footer>
     </div>

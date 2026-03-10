@@ -30,7 +30,7 @@ function Navbar() {
   );
 
   return (
-    <nav className="sticky top-0 z-50bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 px-6 py-4 transition-colors duration-200">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 px-6 py-4 transition-colors duration-200">
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-semibold">Mohit Sajwan</h1>
 
