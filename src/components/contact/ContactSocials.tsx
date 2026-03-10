@@ -31,9 +31,9 @@ function ContactSocials() {
         <span>Email</span>
       </a>
 
-      <p className="text-sm text-gray-500 dark:text-gray-400">
-        Currently open to remote opportunities.
-      </p>
+      <span className="text-gray-600 font-medium">
+        ● Open to full-time and remote opportunities.
+      </span>
     </div>
   );
 }
