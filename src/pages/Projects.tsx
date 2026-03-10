@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+
 import ProjectCard from "../components/ProjectCard";
 import useGithubProjects from "../hooks/useGithubProjects";
+import { useState } from "react";
 
 function Projects() {
-  const { projects, loading, error } = useGithubProjects("sajwanmohit");
+  const [reloadKey, setReloadKey] = useState(0);
+  const { projects, loading, error } = useGithubProjects("sajwanmohit", reloadKey);
 
   if (loading) {
     return (
@@ -33,9 +36,15 @@ function Projects() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <p className="text-red-600 dark:text-red-400">
+            <p className="text-red-600 dark:text-red-400 mb-4">
               Failed to load projects: {error}
             </p>
+            <button
+              onClick={() => setReloadKey(k => k + 1)}
+              className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
+            >
+              Retry
+            </button>
           </motion.div>
         </div>
       </section>
