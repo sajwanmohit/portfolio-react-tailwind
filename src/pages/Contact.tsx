@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ContactForm from "../components/contact/ContactForm";
 import ContactSocials from "../components/contact/ContactSocials";
+import { Download } from "lucide-react";
 
 function Contact() {
   return (
@@ -15,7 +16,23 @@ function Contact() {
             ease: "easeOut",
           }}
         >
-          <h2 className="text-3xl font-bold mb-6">Let's Work Together</h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold">Let's Work Together</h2>
+
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 
+               px-6 py-3 
+               bg-blue-600 text-white rounded-lg 
+               transition-all duration-200
+               hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5
+               active:scale-95"
+            >
+              <Download size={18} />
+              Download Resume
+            </a>
+          </div>
 
           <p className="text-gray-600 dark:text-gray-400 mb-8">
             I'm always interested in new opportunities, collaborations, and
