@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
+import { useSiteSettings } from "../hooks/useSiteSettings";
 
-const skills = [
-  "Java",
-  "Spring Boot",
-  "Microservices",
-  "Angular",
-  "AWS"
-];
+const skills = ["Java", "Spring Boot", "Microservices", "Angular", "AWS"];
 
 function Hero() {
+  const { data } = useSiteSettings();
   const { theme } = useTheme();
-  console.log("Hero : ",theme);
+  console.log("Hero : ", theme);
   return (
     <section
       className="min-h-screen
@@ -32,18 +28,18 @@ function Hero() {
     >
       {/* Animated Name */}
       <motion.h1
-              key={theme}
+        key={theme}
         initial={{ opacity: 0, y: -60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         className="text-5xl md:text-6xl font-bold mb-4"
       >
-        Mohit Sajwan
+        {data?.name}
       </motion.h1>
 
       {/* Animated Role */}
       <motion.h2
-              key={"role-" + theme}
+        key={"role-" + theme}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -94,7 +90,7 @@ function Hero() {
         </button>
 
         <a
-          href="https://github.com/"
+          href={data?.ownerGithubProfileURL}
           target="_blank"
           className="px-6 py-3
           border
