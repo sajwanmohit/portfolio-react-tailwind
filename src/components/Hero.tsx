@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { useSiteSettings } from "../hooks/useSiteSettings";
 
@@ -78,17 +79,12 @@ function Hero() {
         transition={{ delay: 1 }}
         className="flex gap-4"
       >
-        <button
-          className="px-6 py-3
-          bg-blue-500
-          text-white
-          rounded-lg
-          hover:bg-blue-600
-          transition"
+        <Link
+          to="/projects"
+          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
         >
           View Projects
-        </button>
-
+        </Link>
         <a
           href={data?.ownerGithubProfileURL}
           target="_blank"

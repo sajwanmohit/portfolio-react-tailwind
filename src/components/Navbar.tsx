@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import { useSiteSettings } from "../hooks/useSiteSettings";
 
-function Navbar() {
-  const { data } = useSiteSettings();
+type NavbarProps = {
+  name?: string;
+};
+
+function Navbar({ name }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
@@ -34,7 +36,7 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 px-6 py-4 transition-colors duration-200">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-semibold">{data?.name}</h1>
+        <h1 className="text-xl font-semibold">{name}</h1>
 
         <button
           className="md:hidden text-gray-900 dark:text-white"
@@ -43,7 +45,6 @@ function Navbar() {
           ☰
         </button>
 
-        {/* Desktop links */}
         <div className="hidden md:flex gap-6 items-center">
           {navLinks}
 
@@ -56,7 +57,6 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="flex flex-col mt-4 gap-4 md:hidden">
           {navLinks}
