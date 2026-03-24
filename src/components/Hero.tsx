@@ -46,7 +46,7 @@ function Hero() {
         transition={{ delay: 0.4 }}
         className="text-2xl md:text-3xl text-blue-500 dark:text-blue-400 mb-6"
       >
-        Full Stack Developer
+        {data?.designation}
       </motion.h2>
 
       {/* Skills falling animation */}
