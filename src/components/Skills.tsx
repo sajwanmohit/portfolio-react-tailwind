@@ -1,29 +1,31 @@
 import { motion } from "framer-motion";
 import { Server, Code, Cloud } from "lucide-react";
+import type { Skill } from "../types/skill";
+import { useSkills } from "../hooks/useSkills";
+
+function groupSkills(skills: Skill[]) {
+  const map: Record<string, Skill[]> = {};
+
+  skills.forEach((skill) => {
+    if (!map[skill.categoryName]) {
+      map[skill.categoryName] = [];
+    }
+    map[skill.categoryName].push(skill);
+  });
+
+  return Object.entries(map).map(([category, skills]) => ({
+    category,
+    skills,
+  }));
+}
 
 function Skills() {
-  const skillGroups = [
-    {
-      category: "Backend",
-      skills: ["Java", "Spring Boot", "Microservices", "REST APIs"],
-    },
-    {
-      category: "Frontend",
-      skills: ["Angular", "React", "TypeScript", "Tailwind CSS"],
-    },
-    {
-      category: "Cloud & DevOps",
-      skills: ["AWS", "Docker", "CI/CD", "Git"],
-    },
-    {
-      category: "Architecture",
-      skills: [
-        "System Design",
-        "Distributed Systems",
-        "Event Driven Architecture",
-      ],
-    },
-  ];
+  const { data: skills, loading, error } = useSkills();
+
+  if (loading) return <p>Loading skills...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+
+  const skillGroups = groupSkills(skills);
 
   const iconMap: Record<string, React.ReactNode> = {
     Java: <Server size={16} />,
@@ -53,7 +55,7 @@ function Skills() {
               key={group.category}
               initial={{ opacity: 0, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{once:true, margin: "-100px"} }
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="
               p-6
@@ -68,7 +70,7 @@ function Skills() {
               <div className="flex flex-wrap gap-3">
                 {group.skills.map((skill) => (
                   <span
-                    key={skill}
+                    key={skill.id}
                     className="
       flex items-center gap-2
       px-3 py-1.5
@@ -82,8 +84,8 @@ function Skills() {
       dark:border-gray-700
       "
                   >
-                    {iconMap[skill]}
-                    {skill}
+                    {iconMap[skill.name]}
+                    {skill.name}
                   </span>
                 ))}
               </div>

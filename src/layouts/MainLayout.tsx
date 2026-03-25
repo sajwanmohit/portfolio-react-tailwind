@@ -11,7 +11,7 @@ function MainLayout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-250">
-      <Navbar />
+      <Navbar name={data?.name}/>
 
       <main className="flex-1 max-w-6xl mx-auto px-6 py-12">
         <Outlet />

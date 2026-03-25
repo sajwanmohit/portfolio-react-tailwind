@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSiteSettings } from "../services/siteSettingService";
+import { getSiteSettings } from "../services/siteSettingsService";
 import { defaultSettings } from "../data/defaultSettings";
+import type { SiteSettings } from "../types/siteSettings";
 
 export const useSiteSettings = () =>
-  useQuery({
+  useQuery<SiteSettings>({
     queryKey: ["siteSettings"],
     queryFn: getSiteSettings,
     initialData: defaultSettings,
