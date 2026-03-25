@@ -2,13 +2,24 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { useSiteSettings } from "../hooks/useSiteSettings";
+import { useSkills } from "../hooks/useSkills";
+import { useMemo } from "react";
 
-const skills = ["Java", "Spring Boot", "Microservices", "Angular", "AWS"];
+function getRandomSkills(skills: any[], count: number) {
+  const shuffled = [...skills].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
 
 function Hero() {
+  const { data: skillsData, loading } = useSkills();
   const { data } = useSiteSettings();
   const { theme } = useTheme();
-  console.log("Hero : ", theme);
+
+  const randomSkills = useMemo(() => {
+    if (!skillsData) return [];
+    return getRandomSkills(skillsData, 6);
+  }, [skillsData]);
+
   return (
     <section
       className="min-h-screen
@@ -49,28 +60,31 @@ function Hero() {
         {data?.designation}
       </motion.h2>
 
-      {/* Skills falling animation */}
-      <div className="flex flex-wrap gap-3 justify-center max-w-xl mb-10">
-        {skills.map((skill, index) => (
-          <motion.span
-            key={skill + theme}
-            initial={{ opacity: 0, y: -120 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.6 + index * 0.15,
-              type: "spring",
-              stiffness: 120,
-            }}
-            className="px-4 py-2
+      {loading ? (
+        <p className="text-sm text-gray-400">Loading skills...</p>
+      ) : (
+        <div className="flex flex-wrap gap-3 justify-center max-w-xl mb-10">
+          {randomSkills.map((skill, index) => (
+            <motion.span
+              key={skill.id + theme}
+              initial={{ opacity: 0, y: -120 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.6 + index * 0.15,
+                type: "spring",
+                stiffness: 120,
+              }}
+              className="px-4 py-2
             text-sm
             bg-gray-200
             dark:bg-gray-800
             rounded-lg"
-          >
-            {skill}
-          </motion.span>
-        ))}
-      </div>
+            >
+              {skill.name}
+            </motion.span>
+          ))}
+        </div>
+      )}
 
       {/* Buttons */}
       <motion.div
