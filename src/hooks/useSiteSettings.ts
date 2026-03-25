@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSiteSettings } from "../api/siteSettings";
+import { getSiteSettings } from "../services/siteSettingsService";
 import { defaultSettings } from "../data/defaultSettings";
 import type { SiteSettings } from "../types/siteSettings";
 
