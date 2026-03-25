@@ -2,6 +2,7 @@ import type { SiteSettings } from "../types/siteSettings"
 
 export const defaultSettings: SiteSettings = {
   name: "Mohit Sajwan",
+  designation: "Full Stack Developer",
   about:
     "I am a Full Stack Developer with 5 years of experience building scalable backend systems using Java, Spring Boot, and cloud technologies.",
   ownerGithubProfileURL: "https://github.com/sajwanmohit",
