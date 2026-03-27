@@ -58,7 +58,7 @@ function Navbar({ name }: NavbarProps) {
       </div>
 
       {open && (
-        <div className="flex flex-col mt-4 gap-4 md:hidden">
+        <div className="absolute left-0 top-full w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-4 p-6 md:hidden">
           {navLinks}
 
           <button

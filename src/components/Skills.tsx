@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Server, Code, Cloud } from "lucide-react";
 import type { Skill } from "../types/skill";
 import { useSkills } from "../hooks/useSkills";
+import Container from "./ui/Container";
 
 function groupSkills(skills: Skill[]) {
   const map: Record<string, Skill[]> = {};
@@ -45,11 +46,11 @@ function Skills() {
     "Event Driven Architecture": <Server size={16} />,
   };
   return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="section">
+      <Container>
         <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {skillGroups.map((group, index) => (
             <motion.div
               key={group.category}
@@ -92,7 +93,7 @@ function Skills() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

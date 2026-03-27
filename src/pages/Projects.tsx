@@ -10,7 +10,7 @@ function Projects() {
 
   if (loading) {
     return (
-      <section className="py-20">
+      <section className="section">
         <div className="mx-auto max-w-6xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ function Projects() {
 
   if (error) {
     return (
-      <section className="py-20">
+      <section className="section">
         <div className="mx-auto max-w-6xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ function Projects() {
   }
 
   return (
-    <section className="py-20">
+    <section className="section">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ function Projects() {
           <h2 className="mb-12 text-center text-3xl font-bold">Projects</h2>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}

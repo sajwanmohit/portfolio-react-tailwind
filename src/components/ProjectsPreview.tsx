@@ -49,7 +49,7 @@ function ProjectsPreview() {
 
   if (loading) {
     return (
-      <section className="py-20">
+      <section className="section">
         <div className="mx-auto max-w-6xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ function ProjectsPreview() {
 
   if (error) {
     return (
-      <section className="py-20">
+      <section className="section">
         <div className="mx-auto max-w-6xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ function ProjectsPreview() {
   }
 
   return (
-    <section className="py-20">
+    <section className="section">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

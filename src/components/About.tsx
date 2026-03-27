@@ -6,14 +6,14 @@ function About() {
 
   if (isLoading) {
     return (
-      <section className="py-20 text-center">
+      <section className="section text-center">
         Loading...
       </section>
     )
   }
 
   return (
-    <section className="py-20 text-center max-w-3xl mx-auto">
+    <section className="section text-center max-w-3xl mx-auto">
 
       <h2 className="text-3xl font-bold mb-6">
         About Me
