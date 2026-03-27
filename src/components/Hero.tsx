@@ -21,30 +21,14 @@ function Hero() {
   }, [skillsData]);
 
   return (
-    <section
-      className="min-h-screen
-      flex flex-col
-      justify-center
-      items-center
-      text-center
-      px-6
-      bg-gradient-to-b
-      from-gray-100
-      to-white
-      dark:from-gray-900
-      dark:to-black
-      text-gray-900
-      dark:text-white
-      transition-colors
-      duration-300"
-    >
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6">
       {/* Animated Name */}
       <motion.h1
         key={theme}
         initial={{ opacity: 0, y: -60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="text-5xl md:text-6xl font-bold mb-4"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
       >
         {data?.name}
       </motion.h1>
@@ -55,7 +39,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
-        className="text-2xl md:text-3xl text-blue-500 dark:text-blue-400 mb-6"
+        className="text-lg sm:text-xl md:text-2xl mb-6"
       >
         {data?.designation}
       </motion.h2>
@@ -63,7 +47,7 @@ function Hero() {
       {loading ? (
         <p className="text-sm text-gray-400">Loading skills...</p>
       ) : (
-        <div className="flex flex-wrap gap-3 justify-center max-w-xl mb-10">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           {randomSkills.map((skill, index) => (
             <motion.span
               key={skill.id + theme}

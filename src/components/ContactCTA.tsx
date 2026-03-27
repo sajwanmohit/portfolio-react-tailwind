@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function ContactCTA() {
   return (
-    <section className="py-20 text-center">
+    <section className="section text-center">
       <h2 className="text-3xl font-bold mb-6">Let's Work Together</h2>
 
       <p className="text-gray-400 mb-6">
