@@ -13,13 +13,13 @@ function About() {
   }
 
   return (
-    <section className="section text-center max-w-3xl mx-auto">
+    <section className="section text-center max-w-2xl sm:max-w-3xl mx-auto px-4">
 
-      <h2 className="text-3xl font-bold mb-6">
+      <h2 className="text-3xl font-bold">
         About Me
       </h2>
 
-      <p className="text-gray-300 leading-relaxed">
+      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
         {data?.about}
       </p>
 

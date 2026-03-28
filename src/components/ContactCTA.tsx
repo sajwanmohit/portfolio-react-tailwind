@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 function ContactCTA() {
   return (
     <section className="section text-center">
-      <h2 className="text-3xl font-bold mb-6">Let's Work Together</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6">Let's Work Together</h2>
 
-      <p className="text-gray-400 mb-6">
+      <p className="text-gray-400 mb-8 max-w-xl mx-auto px-4">
         Interested in collaborating or discussing opportunities?
       </p>
 

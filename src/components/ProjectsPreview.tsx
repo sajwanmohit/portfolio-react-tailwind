@@ -112,7 +112,7 @@ function ProjectsPreview() {
           </div>
         </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-16">
           {projects.slice(0, 6).map((project: Project, index: number) => (
             <motion.div
               key={project.id}
