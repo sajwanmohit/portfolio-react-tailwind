@@ -21,7 +21,7 @@ function Hero() {
   }, [skillsData]);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6">
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 gap-6">
       {/* Animated Name */}
       <motion.h1
         key={theme}
@@ -47,7 +47,7 @@ function Hero() {
       {loading ? (
         <p className="text-sm text-gray-400">Loading skills...</p>
       ) : (
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <div className="flex flex-wrap gap-3 sm:gap-4">
           {randomSkills.map((skill, index) => (
             <motion.span
               key={skill.id + theme}

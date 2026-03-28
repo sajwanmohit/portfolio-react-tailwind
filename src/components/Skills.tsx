@@ -50,7 +50,7 @@ function Skills() {
       <Container>
         <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           {skillGroups.map((group, index) => (
             <motion.div
               key={group.category}
@@ -59,7 +59,7 @@ function Skills() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="
-              p-6
+              p-4 sm:p-6
               border
               border-gray-200
               dark:border-gray-800
