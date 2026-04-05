@@ -5,7 +5,7 @@ import type { Project } from "../types/github";
 import usePortfolioProjects from "../hooks/usePortfolioProjects";
 
 function ProjectsPreview() {
-  const [reloadKey, setReloadKey] = useState(0);
+  const [reloadKey] = useState(0);
   const { rawProjects, loading, error } = usePortfolioProjects(reloadKey);
   const tickerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
