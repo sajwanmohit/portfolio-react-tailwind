@@ -1,12 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import useGithubProjects from "../hooks/useGithubProjects";
 import ProjectCard from "./ProjectCard";
 import type { Project } from "../types/github";
+import usePortfolioProjects from "../hooks/usePortfolioProjects";
 
 function ProjectsPreview() {
-  const { projects, loading, error } = useGithubProjects("sajwanmohit",2);
-
+  const [reloadKey, setReloadKey] = useState(0);
+  const { rawProjects, loading, error } = usePortfolioProjects(reloadKey);
   const tickerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -59,7 +59,9 @@ function ProjectsPreview() {
             <div className="mb-8 flex items-center justify-center">
               <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600 dark:border-gray-600 dark:border-t-blue-400"></div>
             </div>
-            <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
+            <p className="text-gray-600 dark:text-gray-400">
+              Loading projects...
+            </p>
           </motion.div>
         </div>
       </section>
@@ -113,7 +115,7 @@ function ProjectsPreview() {
         </motion.div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-16">
-          {projects.slice(0, 6).map((project: Project, index: number) => (
+          {rawProjects.slice(0, 6).map((project: Project, index: number) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
@@ -121,7 +123,7 @@ function ProjectsPreview() {
               transition={{
                 delay: index * 0.1,
                 duration: 0.6,
-                ease: "easeOut"
+                ease: "easeOut",
               }}
               viewport={{ once: true }}
             >
