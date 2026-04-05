@@ -10,12 +10,13 @@ function usePortfolioProjects(reloadKey: number) {
   const [rawProjects, setRawProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    fetch("http://localhost:8080/api/public/projects?selected=true", {
+    fetch(`${BASE_URL}/public/projects?selected=true`, {
       cache: "no-store",
     })
       .then((res) => {
@@ -30,7 +31,7 @@ function usePortfolioProjects(reloadKey: number) {
         setRawProjects([]);
       })
       .finally(() => setLoading(false));
-  }, [reloadKey]); 
+  }, [reloadKey]);
 
   return { rawProjects, loading, error };
 }
