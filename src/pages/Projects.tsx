@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 import ProjectCard from "../components/ProjectCard";
-import useGithubProjects from "../hooks/useGithubProjects";
 import { useState } from "react";
+import usePortfolioProjects from "../hooks/usePortfolioProjects";
 
 function Projects() {
   const [reloadKey, setReloadKey] = useState(0);
-  const { projects, loading, error } = useGithubProjects("sajwanmohit", reloadKey);
+  const { rawProjects, loading, error } = usePortfolioProjects(reloadKey); 
 
   if (loading) {
     return (
@@ -20,7 +20,9 @@ function Projects() {
             <div className="mb-8 flex items-center justify-center">
               <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600 dark:border-gray-600 dark:border-t-blue-400"></div>
             </div>
-            <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
+            <p className="text-gray-600 dark:text-gray-400">
+              Loading projects...
+            </p>
           </motion.div>
         </div>
       </section>
@@ -40,7 +42,7 @@ function Projects() {
               Failed to load projects: {error}
             </p>
             <button
-              onClick={() => setReloadKey(k => k + 1)}
+              onClick={() => setReloadKey((k) => k + 1)}
               className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
             >
               Retry
@@ -64,7 +66,7 @@ function Projects() {
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
+          {rawProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
