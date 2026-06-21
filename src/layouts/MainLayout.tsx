@@ -10,7 +10,7 @@ function MainLayout() {
   const yearText =
     startYear === currentYear ? startYear : `${startYear} – ${currentYear}`;
 
-  const particles = Array.from({ length: 15 }, (_, i) => ({
+  const particles = Array.from({ length: 15 }, () => ({
     left: `${Math.random() * 100}%`,
     animationDelay: `${Math.random() * 12}s`,
     animationDuration: `${8 + Math.random() * 8}s`,
