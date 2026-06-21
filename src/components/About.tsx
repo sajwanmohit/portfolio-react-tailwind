@@ -15,7 +15,7 @@ function About() {
   return (
     <section className="section text-center max-w-2xl sm:max-w-3xl mx-auto px-4">
 
-      <h2 className="text-3xl font-bold">
+      <h2 className="glitch-hover text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
         About Me
       </h2>
 

@@ -34,9 +34,9 @@ function Navbar({ name }: NavbarProps) {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 px-6 py-4 transition-colors duration-200">
+    <nav className="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg text-gray-900 dark:text-white border-b border-gray-200/50 dark:border-gray-800/50 px-6 py-4 transition-colors duration-200">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-semibold">{name}</h1>
+        <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">{name}</h1>
 
         <button
           className="md:hidden text-gray-900 dark:text-white"

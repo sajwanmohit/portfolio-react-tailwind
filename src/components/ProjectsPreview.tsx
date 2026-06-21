@@ -95,7 +95,7 @@ function ProjectsPreview() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="mb-12 text-center text-3xl font-bold">Projects</h2>
+          <h2 className="glitch-hover mb-12 text-center text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</h2>
         </motion.div>
 
         <motion.div
