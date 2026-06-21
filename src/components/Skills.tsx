@@ -46,11 +46,34 @@ function Skills() {
     "Event Driven Architecture": <Server size={16} />,
   };
   return (
-    <section className="section">
-      <Container>
-        <h2 className="text-3xl font-bold text-center mb-12">Skills</h2>
+    <>
+      <section className="min-h-screen flex items-center justify-center">
+        <motion.h2
+          className="glitch-hover text-3xl sm:text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_40px_rgba(168,85,247,0.6)]"
+        >
+          {"Skills".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 60, rotateX: -90 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: i * 0.08,
+                type: "spring",
+                stiffness: 100,
+                damping: 12,
+              }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.h2>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+      <section className="section">
+        <Container>
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
           {skillGroups.map((group, index) => (
             <motion.div
               key={group.category}
@@ -59,12 +82,13 @@ function Skills() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="
+              neon-border-hover
               p-4 sm:p-6
               border
               border-gray-200
               dark:border-gray-800
               bg-white
-              dark:bg-gray-900"
+              dark:bg-gray-900 rounded-lg"  
             >
               <h3 className="text-xl font-semibold mb-4">{group.category}</h3>
 
@@ -72,7 +96,7 @@ function Skills() {
                 {group.skills.map((skill) => (
                   <span
                     key={skill.id}
-                    className="
+                    className={`
       flex items-center gap-2
       px-3 py-1.5
       text-sm
@@ -83,7 +107,8 @@ function Skills() {
       dark:text-gray-200
       border border-gray-200
       dark:border-gray-700
-      "
+      ${index % 3 === 0 ? 'animate-float' : index % 3 === 1 ? 'animate-float-delay' : 'animate-float-slow'}
+      `}
                   >
                     {iconMap[skill.name]}
                     {skill.name}
@@ -95,6 +120,7 @@ function Skills() {
         </div>
       </Container>
     </section>
+    </>
   );
 }
 
