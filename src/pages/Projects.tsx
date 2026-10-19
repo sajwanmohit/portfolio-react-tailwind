@@ -11,7 +11,7 @@ function Projects() {
   if (loading) {
     return (
       <section className="section">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ function Projects() {
   if (error) {
     return (
       <section className="section">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,17 +55,17 @@ function Projects() {
 
   return (
     <section className="section">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="mb-12 text-center text-3xl font-bold">Projects</h2>
+          <h2 className="mb-8 text-center text-3xl font-bold sm:mb-12">Projects</h2>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {rawProjects.map((project, index) => (
             <motion.div
               key={project.id}

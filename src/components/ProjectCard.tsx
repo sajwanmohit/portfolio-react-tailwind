@@ -21,7 +21,7 @@ function ProjectCard({
   const techList = tech.length > 0 ? tech : ["JavaScript"];
 
   return (
-    <div className="neon-border-hover group relative overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 text-gray-900 dark:text-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20">
+    <div className="neon-border-hover group relative overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 sm:p-6 text-gray-900 dark:text-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20">
       {image && (
         <img
           src={image}
@@ -35,7 +35,7 @@ function ProjectCard({
           {title}
         </h3>
 
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+        <p className="break-words text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           {description}
         </p>
       </div>

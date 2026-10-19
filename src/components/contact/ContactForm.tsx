@@ -39,7 +39,7 @@ function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-xl mx-auto px-4 sm:px-0 space-y-5 sm:space-y-6"
+      className="w-full max-w-xl mx-auto space-y-5 sm:space-y-6"
     >
       <div>
         <input
