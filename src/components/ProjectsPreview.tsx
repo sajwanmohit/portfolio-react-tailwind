@@ -50,7 +50,7 @@ function ProjectsPreview() {
   if (loading) {
     return (
       <section className="section">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ function ProjectsPreview() {
   if (error) {
     return (
       <section className="section">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,14 +88,14 @@ function ProjectsPreview() {
 
   return (
     <section className="section">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="glitch-hover mb-12 text-center text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</h2>
+          <h2 className="glitch-hover mb-8 text-center text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent sm:mb-12">Projects</h2>
         </motion.div>
 
         <motion.div
@@ -114,7 +114,7 @@ function ProjectsPreview() {
           </div>
         </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+        <div className="mb-12 grid gap-4 sm:mb-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {rawProjects.slice(0, 6).map((project: Project, index: number) => (
             <motion.div
               key={project.id}

@@ -18,14 +18,14 @@ function Contact() {
               ease: "easeOut",
             }}
           >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold">Let's Work Together</h2>
+            <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="text-2xl font-bold sm:text-3xl">Let's Work Together</h2>
 
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center gap-2 
-               px-6 py-3 
+                className="inline-flex items-center gap-2
+               px-4 py-2.5 sm:px-6 sm:py-3
                bg-blue-600 text-white rounded-lg 
                transition-all duration-200
                hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5

@@ -50,7 +50,7 @@ function MainLayout() {
         </Container>
       </main>
 
-      <footer className="sticky bottom-0 text-center py-2 text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+      <footer className="shrink-0 text-center py-2 px-4 text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
         © {yearText} <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">{data?.name}</span>
       </footer>
     </div>

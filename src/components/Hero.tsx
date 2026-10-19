@@ -73,9 +73,9 @@ function Hero() {
   }, [allSkillNames]);
 
   return (
-    <section className="grid-bg min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6">
+    <section className="grid-bg min-h-screen flex flex-col justify-center items-center text-center px-0 sm:px-6">
       {/* Central container — name as the sun, skills orbit around it */}
-      <div className="relative w-[36rem] max-w-full aspect-square mx-auto">
+      <div className="hero-orbit relative w-full max-w-[36rem] aspect-square mx-auto">
         {/* Name at the center */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <motion.h1
@@ -124,7 +124,7 @@ function Hero() {
                     style={{
                       animation: `counter-orbit ${duration}s linear infinite`,
                       animationDelay: `-${offset}s`,
-                      left: `${radius}px`,
+                      left: `calc(${radius}px * var(--orbit-radius-scale, 1))`,
                     }}
                   >
                     <div style={{ transform: "translateX(-50%)" }}>
@@ -172,7 +172,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="flex gap-4"
+        className="flex flex-wrap justify-center gap-3 sm:gap-4"
       >
         <Link
           to="/projects"

@@ -6,6 +6,22 @@ html {
   scroll-behavior: smooth;
 }
 
+.hero-orbit {
+  --orbit-radius-scale: 1;
+}
+
+@media (max-width: 639px) {
+  .hero-orbit {
+    --orbit-radius-scale: 0.4;
+  }
+}
+
+@media (max-width: 359px) {
+  .hero-orbit {
+    --orbit-radius-scale: 0.34;
+  }
+}
+
 body {
   @apply text-sm sm:text-base;
 }
