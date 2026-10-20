@@ -7,15 +7,11 @@ function ProjectCard({
   image,
   description,
   tech = [],
-  github,
-  demo,
+  githubUrl,
+  liveUrl,
   stars,
 }: ProjectCardProps) {
-  // fallback demo links to display when none is provided
-  const FALLBACK_DEMO = 
-    "https://portfolio-react-tailwind-nu.vercel.app/";
-
-  const demoUrl = demo || FALLBACK_DEMO;
+  const liveSiteUrl = liveUrl?.trim();
 
   // If no tech supplied, show a placeholder
   const techList = tech.length > 0 ? tech : ["JavaScript"];
@@ -65,9 +61,9 @@ function ProjectCard({
       )}
 
       {/* Links */}
-      <div className="flex gap-4 text-sm font-medium">
+      <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
         <a
-          href={github}
+          href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 dark:text-blue-400 transition-colors hover:text-blue-700 dark:hover:text-blue-300 hover:underline"
@@ -75,14 +71,16 @@ function ProjectCard({
           GitHub
         </a>
 
-        <a
-          href={demoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-green-600 dark:text-green-400 transition-colors hover:text-green-700 dark:hover:text-green-300 hover:underline"
-        >
-          Live Demo
-        </a>
+        {liveSiteUrl && (
+          <a
+            href={liveSiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-600 dark:text-green-400 transition-colors hover:text-green-700 dark:hover:text-green-300 hover:underline"
+          >
+            Live site
+          </a>
+        )}
       </div>
     </div>
   );
