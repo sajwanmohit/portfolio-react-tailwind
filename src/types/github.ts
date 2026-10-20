@@ -27,6 +27,17 @@ export type Project = {
   description: string;
   image?: string;
   tech: string[];
+  githubUrl: string;
+  liveUrl?: string | null;
+  stars?: number;
+};
+
+export type GithubProject = {
+  id: string | number;
+  title: string;
+  description: string;
+  image?: string;
+  tech: string[];
   github: string;
   demo?: string;
   stars?: number;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import type { GithubRepo, Project } from "../types/github";
+import type { GithubProject, GithubRepo } from "../types/github";
 
 function useGithubProjects(username: string, reloadKey: number) {
   const [repos, setRepos] = useState<GithubRepo[]>([]);
@@ -32,7 +32,7 @@ function useGithubProjects(username: string, reloadKey: number) {
 
   const DEFAULT_TECH = ["JavaScript"];
 
-  const projects: Project[] = useMemo(() => {
+  const projects: GithubProject[] = useMemo(() => {
     return repos
       .filter(
         (repo) =>
